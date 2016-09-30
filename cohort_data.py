@@ -27,9 +27,7 @@ def unique_houses(filename):
     # write one of the set comprehensions
     return houses
     
-
-
-unique_houses("cohort_data.txt")
+# unique_houses("cohort_data.txt")
 
 def sort_by_cohort(filename):
     """TODO: Sort students by cohort, skipping instructors.
@@ -54,8 +52,16 @@ def sort_by_cohort(filename):
     ghosts = []
 
     # Code goes here
-
+    with open(filename) as cohort_data:
+        for line in cohort_data:
+            words = line.split("|")
+            names = words[0] + " " + words[1]
+            if words[4] != "I" or words[4] != "G":
+                all_students.append(names)
+    print all_students
     return all_students
+
+sort_by_cohort("cohort_data.txt")
 
 
 def students_by_house(filename):
